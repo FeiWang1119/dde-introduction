@@ -5,6 +5,10 @@
 
 #include "worker.h"
 
+const static QString DaemonDockService = "org.deepin.dde.daemon.Dock1";
+const static QString DaemonDockPath = "/org/deepin/dde/daemon/Dock1";
+const static QString DaemonDockInterface = "org.deepin.dde.daemon.Dock1";
+
 Worker *Worker::Instance()
 {
     static Worker *instance = new Worker;
@@ -27,39 +31,20 @@ bool Worker::isWaylandType()
     return bRet;
 }
 
+int Worker::displayMode()
+{
+    return qvariant_cast<int>(m_daemonDockInter->property("DisplayMode"));
+}
+
 /*******************************************************************************
  1. @函数:    setDesktopMode
  2. @作者:
  3. @日期:    2020-12-15
  4. @说明:    设置桌面样式发送到dock栏
 *******************************************************************************/
-void Worker::setDesktopMode(Model::DesktopMode mode)
+void Worker::setDisplayMode(int mode)
 {
-    QStringList args;
-    switch (mode) {
-        case Model::EfficientMode:
-            args << "--print-reply"
-                 << "--dest=com.deepin.dde.daemon.Launcher"
-                 << "/com/deepin/dde/daemon/Launcher"
-                 << "org.freedesktop.DBus.Properties.Set"
-//                 << "string:com.deepin.dde.daemon.Launcher"
-//                 << "string:Fullscreen"
-                 << "variant:boolean:false";
-            break;
-        case Model::FashionMode:
-            args << "--print-reply"
-                 << "--dest=com.deepin.dde.daemon.Launcher"
-                 << "/com/deepin/dde/daemon/Launcher"
-                 << "org.freedesktop.DBus.Properties.Set"
-//                 << "string:com.deepin.dde.daemon.Launcher"
-//                 << "string:Fullscreen"
-                 << "variant:boolean:true";
-            break;
-    }
-
-    QProcess::startDetached("dbus-send", args);
-
-    m_dockInter->setDisplayMode(mode);
+    m_daemonDockInter->setProperty("DisplayMode", QVariant::fromValue(mode));
 }
 
 /*******************************************************************************
@@ -216,24 +201,22 @@ Worker::Worker(QObject *parent)
                            QDBusConnection::sessionBus(), this))
     , m_wmInter(new WMSwitcher("com.deepin.WMSwitcher", "/com/deepin/WMSwitcher",
                                QDBusConnection::sessionBus(), this))
-    , m_dockInter(new Dock("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
-                           QDBusConnection::sessionBus(), this))
+    , m_daemonDockInter(new QDBusInterface(DaemonDockService, DaemonDockPath, DaemonDockInterface, QDBusConnection::sessionBus(), this))
 {
     connect(m_iconInter, &Icon::Refreshed, this, &Worker::onIconRefreshed);
     connect(m_iconInter, &Icon::IconThemeChanged, m_model, &Model::setCurrentIcon);
     connect(m_wmInter, &WMSwitcher::WMChanged, this, &Worker::onWMChanged);
-    connect(m_dockInter, &Dock::DisplayModeChanged, this, &Worker::onDisplayModeChanged);
+    QDBusConnection::sessionBus().connect(DaemonDockService, DaemonDockPath, DaemonDockInterface, "DisplayModeChanged", this, SIGNAL(onDisplayModeChanged(int)));
 
     m_iconInter->setSync(false);
     m_wmInter->setSync(false);
-    m_dockInter->setSync(false);
 
     m_model->setCurrentIcon(m_iconInter->iconTheme());
     m_windowManage = DWindowManagerHelper::instance();
     connect(m_windowManage, &DWindowManagerHelper::windowManagerChanged, this, &Worker::onWMChang);
 
     onWMChanged(m_wmInter->CurrentWM());
-    onDisplayModeChanged(m_dockInter->displayMode());
+    onDisplayModeChanged(m_daemonDockInter->property("DisplayMode").toInt());
 
     onIconRefreshed("icon");
 }

@@ -109,10 +109,10 @@ void DesktopModeModule::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Left) {
         if (m_model->desktopMode() == Model::EfficientMode)//代码不规范
-            m_worker->setDesktopMode(Model::FashionMode);
+            m_worker->setDisplayMode(Model::FashionMode);
     } else if (event->key() == Qt::Key_Right) {
         if (m_model->desktopMode() == Model::FashionMode)
-            m_worker->setDesktopMode(Model::EfficientMode);
+            m_worker->setDisplayMode(Model::EfficientMode);
     }
 }
 
@@ -150,8 +150,8 @@ void DesktopModeModule::paintEvent(QPaintEvent *event)
 }
 
 void DesktopModeModule::onSetModeFashion() {
-    m_worker->setDesktopMode(Model::FashionMode);
+    m_worker->setDisplayMode(Model::FashionMode);
 }
 void DesktopModeModule::onSetModeEfficient() {
-    m_worker->setDesktopMode(Model::EfficientMode);
+    m_worker->setDisplayMode(Model::EfficientMode);
 }

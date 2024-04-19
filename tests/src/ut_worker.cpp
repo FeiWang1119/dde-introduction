@@ -32,12 +32,12 @@ TEST_F(ut_worker_test, setDesktopMode)
     ASSERT_TRUE(m_worker->m_model != nullptr);
     ASSERT_TRUE(m_worker->m_iconInter != nullptr);
     ASSERT_TRUE(m_worker->m_wmInter != nullptr);
-    ASSERT_TRUE(m_worker->m_dockInter != nullptr);
+    ASSERT_TRUE(m_worker->m_daemonDockInter != nullptr);
     //测试时尚模式
-    m_worker->setDesktopMode(Model::DesktopMode::FashionMode);
+    m_worker->setDisplayMode(Model::DesktopMode::FashionMode);
 
     //测试高效模式
-    m_worker->setDesktopMode(Model::DesktopMode::EfficientMode);
+    m_worker->setDisplayMode(Model::DesktopMode::EfficientMode);
 }
 
 /*******************************************************************************

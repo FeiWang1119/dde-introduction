@@ -27,15 +27,22 @@ DGUI_USE_NAMESPACE
 class Worker : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int DisplayMode READ displayMode WRITE setDisplayMode NOTIFY DisplayModeChanged)
 
 public:
     static Worker* Instance();
     /* 判断当前系统是否是wayland系统 */
     static bool isWaylandType();
 
+    int displayMode();
+    
+Q_SIGNALS:
+    // property changed signals
+    void DisplayModeChanged(int displayMode) const;
+
 public slots:
     //设置桌面样式发送到dock栏
-    void setDesktopMode(Model::DesktopMode mode);
+    void setDisplayMode(int mode);
     //设置运行模式发送DBUS修改电脑的窗口特效打开或关闭
     void setWMMode(Model::WMType type);
     //设置主题图标改变电脑的主题图标配置
@@ -67,7 +74,7 @@ private:
     //窗口特效DBUS
     WMSwitcher* m_wmInter;
     //Dock栏DBUS
-    Dock*       m_dockInter;
+    QDBusInterface *m_daemonDockInter;
     //窗口管理帮助，什么作用???
     DWindowManagerHelper* m_windowManage;
 };
