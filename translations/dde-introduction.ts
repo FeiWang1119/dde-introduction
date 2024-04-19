@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="en">
 <context>
     <name>BottomNavigation</name>
     <message>
@@ -21,12 +23,12 @@
 <context>
     <name>DesktopModeModule</name>
     <message>
-        <source>Efficient Mode</source>
-        <translation>Efficient Mode</translation>
+        <source>Align left</source>
+        <translation>Align left</translation>
     </message>
     <message>
-        <source>Fashion Mode</source>
-        <translation>Fashion Mode</translation>
+        <source>Align center</source>
+        <translation>Align center</translation>
     </message>
 </context>
 <context>
@@ -38,10 +40,6 @@
     <message>
         <source>Done</source>
         <translation>Done</translation>
-    </message>
-    <message>
-        <source>Choose a desktop mode</source>
-        <translation>Choose a desktop mode</translation>
     </message>
     <message>
         <source>You can switch modes by right clicking on the dock</source>
@@ -63,6 +61,10 @@
         <source>Change it in Control Center &gt; Personalization &gt; Icon Theme</source>
         <translation>Change it in Control Center &gt; Personalization &gt; Icon Theme</translation>
     </message>
+    <message>
+        <source>Choose a desktop mode</source>
+        <translation>Choose a desktop mode</translation>
+    </message>
 </context>
 <context>
     <name>NormalModule</name>
@@ -77,10 +79,6 @@
     <message>
         <source>Desktop Mode</source>
         <translation>Desktop Mode</translation>
-    </message>
-    <message>
-        <source>Choose a desktop mode</source>
-        <translation>Choose a desktop mode</translation>
     </message>
     <message>
         <source>You can switch modes by right clicking on the dock</source>
@@ -109,6 +107,10 @@
     <message>
         <source>Change it in Control Center &gt; Personalization &gt; Icon Theme</source>
         <translation>Change it in Control Center &gt; Personalization &gt; Icon Theme</translation>
+    </message>
+    <message>
+        <source>Choose a desktop mode</source>
+        <translation>Choose a desktop mode</translation>
     </message>
 </context>
 <context>

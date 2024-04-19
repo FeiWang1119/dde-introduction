@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>BottomNavigation</name>
     <message>
@@ -21,12 +23,12 @@
 <context>
     <name>DesktopModeModule</name>
     <message>
-        <source>Efficient Mode</source>
-        <translation>高效模式</translation>
+        <source>Align left</source>
+        <translation>靠左</translation>
     </message>
     <message>
-        <source>Fashion Mode</source>
-        <translation>时尚模式</translation>
+        <source>Align center</source>
+        <translation>居中</translation>
     </message>
 </context>
 <context>
@@ -38,10 +40,6 @@
     <message>
         <source>Done</source>
         <translation>完成</translation>
-    </message>
-    <message>
-        <source>Choose a desktop mode</source>
-        <translation>请选择桌面样式</translation>
     </message>
     <message>
         <source>You can switch modes by right clicking on the dock</source>
@@ -63,6 +61,10 @@
         <source>Change it in Control Center &gt; Personalization &gt; Icon Theme</source>
         <translation>您可以在控制中心个性化模块—图标主题中进行调节</translation>
     </message>
+    <message>
+        <source>Choose a desktop mode</source>
+        <translation>请选择桌面样式</translation>
+    </message>
 </context>
 <context>
     <name>NormalModule</name>
@@ -77,10 +79,6 @@
     <message>
         <source>Desktop Mode</source>
         <translation>桌面样式</translation>
-    </message>
-    <message>
-        <source>Choose a desktop mode</source>
-        <translation>请选择桌面样式</translation>
     </message>
     <message>
         <source>You can switch modes by right clicking on the dock</source>
@@ -109,6 +107,10 @@
     <message>
         <source>Change it in Control Center &gt; Personalization &gt; Icon Theme</source>
         <translation>您可以在控制中心个性化模块—图标主题中进行调节</translation>
+    </message>
+    <message>
+        <source>Choose a desktop mode</source>
+        <translation>请选择桌面样式</translation>
     </message>
 </context>
 <context>

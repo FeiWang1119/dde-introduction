@@ -39,7 +39,9 @@
         <file>resources/3d_small@3x.png</file>
         <file>resources/effective_mode_small@3x.png</file>
         <file>resources/effective_mode_big@3x.png</file>
+        <file>resources/effective_mode_big@3x.jpg</file>
         <file>resources/fashion_mode_big@3x.png</file>
+        <file>resources/fashion_mode_big@3x.jpeg</file>
         <file>resources/fashion_mode_small@3x.png</file>
         <file>resources/community_Moment.png</file>
         <file>resources/close_normal_dark.svg</file>

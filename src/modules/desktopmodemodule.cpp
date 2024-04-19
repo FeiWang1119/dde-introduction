@@ -13,8 +13,8 @@ DesktopModeModule::DesktopModeModule(QWidget *parent)
     , m_fashionWidget(new BaseWidget(this))
 {
     isfirst = true;
-    m_efficientWidget->setTitle(tr("Efficient Mode"));
-    m_fashionWidget->setTitle(tr("Fashion Mode"));
+    m_efficientWidget->setTitle(tr("Align left"));
+    m_fashionWidget->setTitle(tr("Align center"));
 
     connect(m_model, &Model::desktopModeChanged, this, &DesktopModeModule::onDesktopTypeChanged);
     //时尚模式点击响应
@@ -58,8 +58,8 @@ void DesktopModeModule::onDesktopTypeChanged(Model::DesktopMode mode)
 //首次启动初始化图片
 void DesktopModeModule::updateBigIcon()
 {
-    m_efficientWidget->setBigPixmap(":/resources/effective_mode_big@3x.png");
-    m_fashionWidget->setBigPixmap(":/resources/fashion_mode_big@3x.png");
+    m_efficientWidget->setBigPixmap(":/resources/effective_mode_big@3x.jpg");
+    m_fashionWidget->setBigPixmap(":/resources/fashion_mode_big@3x.jpeg");
     m_layout->setContentsMargins(10, 70, 10, 35);
     m_size = QSize(330, 210);
 }
@@ -67,8 +67,8 @@ void DesktopModeModule::updateBigIcon()
 //日常启动初始化图片
 void DesktopModeModule::updateSmallIcon()
 {
-    QPixmap pixmapeff(":/resources/effective_mode_small@3x.png");
-    QPixmap pixmapfash(":/resources/fashion_mode_small@3x.png");
+    QPixmap pixmapeff(":/resources/effective_mode_big@3x.jpg");
+    QPixmap pixmapfash(":/resources/fashion_mode_big@3x.jpeg");
     m_efficientWidget->setSmallPixmap(pixmapeff);
     m_fashionWidget->setSmallPixmap(pixmapfash);
     m_size = QSize(250, 160);
